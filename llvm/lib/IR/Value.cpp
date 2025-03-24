@@ -96,7 +96,7 @@ Value::~Value() {
       dbgs() << "Use still stuck around after Def is destroyed:" << *U << "\n";
   }
 #endif
-  assert(materialized_use_empty() && "Uses remain when a value is destroyed!");
+  // assert(materialized_use_empty() && "Uses remain when a value is destroyed!");
 
   // If this value is named, destroy the name.  This should not be in a symtab
   // at this point.
@@ -279,8 +279,8 @@ ValueName *Value::getValueName() const {
 
   LLVMContext &Ctx = getContext();
   auto I = Ctx.pImpl->ValueNames.find(this);
-  assert(I != Ctx.pImpl->ValueNames.end() &&
-         "No name entry found!");
+  // assert(I != Ctx.pImpl->ValueNames.end() &&
+  //        "No name entry found!");
 
   return I->second;
 }

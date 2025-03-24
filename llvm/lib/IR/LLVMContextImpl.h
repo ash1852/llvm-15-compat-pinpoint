@@ -50,6 +50,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <unordered_map>
 
 namespace llvm {
 
@@ -1396,7 +1397,8 @@ public:
   LLVMContext::YieldCallbackTy YieldCallback = nullptr;
   void *YieldOpaqueHandle = nullptr;
 
-  DenseMap<const Value *, ValueName *> ValueNames;
+  // DenseMap<const Value *, ValueName *> ValueNames;
+  std::unordered_map<const Value *, ValueName *> ValueNames;
 
   using IntMapTy =
       DenseMap<APInt, std::unique_ptr<ConstantInt>, DenseMapAPIntKeyInfo>;
